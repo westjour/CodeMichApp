@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.content.Intent;
 
 
 public class MapActivity extends Activity {
@@ -11,7 +13,19 @@ public class MapActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+
+        // Get the message from the intent
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MyActivity.SALARY);
+
+        // Create the text view
+        TextView textView = new TextView(this);
+        textView.setTextSize(40);
+        textView.setText(message);
+
+        // Set the text view as the activity layout
+        setContentView(textView);
+        //setContentView(R.layout.activity_map);
     }
 
 
