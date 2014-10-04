@@ -1,0 +1,27 @@
+﻿Merge branch 'master' of https://github.com/westjour/CodeMichApp into jourdans
+
+Conflicts:
+	MyApplication/app/src/main/java/com/example/jourdan/myapplication/MapActivity.java
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch jourdans
+# Your branch is up-to-date with 'origin/jourdans'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   MyApplication/app/app.iml
+#	modified:   MyApplication/app/src/main/AndroidManifest.xml
+#	new file:   MyApplication/app/src/main/java/com/example/jourdan/myapplication/AsyncTaskParseJson.java
+#	new file:   MyApplication/app/src/main/java/com/example/jourdan/myapplication/JsonParser.java
+#	modified:   MyApplication/app/src/main/java/com/example/jourdan/myapplication/MapActivity.java
+#	modified:   MyApplication/app/src/main/res/layout/activity_map.xml
+#
+

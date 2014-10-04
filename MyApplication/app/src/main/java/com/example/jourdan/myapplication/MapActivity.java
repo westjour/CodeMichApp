@@ -2,7 +2,7 @@ package com.example.jourdan.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
-<<<<<<< HEAD
+
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -13,7 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-=======
+
 import android.view.Menu;
 import android.view.MenuItem;
 import com.google.android.gms.maps.GoogleMap;
