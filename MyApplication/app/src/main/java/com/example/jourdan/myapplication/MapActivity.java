@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -29,7 +28,6 @@ public class MapActivity extends BaseActivity {
                 .title("Hello world"));
         // we will using AsyncTask during parsing
         new AsyncTaskParseJson().execute();
-
     }
 
     @Override
@@ -50,6 +48,7 @@ public class MapActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
