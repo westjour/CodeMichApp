@@ -3,7 +3,6 @@ package com.example.jourdan.myapplication;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-<<<<<<< HEAD
 import android.view.MenuItem;
 
 import android.util.Log;
