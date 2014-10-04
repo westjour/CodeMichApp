@@ -5,4 +5,9 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Theme for Statistics View -->
+    <style name="MyTextViewTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:textSize">26sp</item>
+    </style>
+
 </resources>

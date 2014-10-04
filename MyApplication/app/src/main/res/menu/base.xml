@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.jourdan.myapplication.BaseActivity" >
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_Home"
+        android:title="Home"
+        android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/action_Map"
+        android:title="Map"
+        android:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/action_Stats"
+        android:title="Stats"
+        android:showAsAction="ifRoom|withText" />
+</menu>
