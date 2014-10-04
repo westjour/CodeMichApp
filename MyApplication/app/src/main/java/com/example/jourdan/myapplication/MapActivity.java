@@ -3,8 +3,6 @@ package com.example.jourdan.myapplication;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.MenuItem;
-
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -20,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
+
 public class MapActivity extends BaseActivity {
     private static final String TAG = "MapActivity";
     private GoogleMap mMap;
@@ -78,6 +77,11 @@ public class MapActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /* Brief:
+     * Param: builder
+     * Param: message
+     */
     public void displayDialog(AlertDialog.Builder builder, String message)
     {
         builder.setMessage(message)
@@ -90,7 +94,12 @@ public class MapActivity extends BaseActivity {
         AlertDialog alert = builder.create();
         alert.show();
 
+
+     /* Brief:
+     *  Param: url
+     */
     }
+
     private JSONObject getGeocodeData(String url)
     {
         JSONObject jObj = null;
@@ -109,6 +118,11 @@ public class MapActivity extends BaseActivity {
         }
         return jObj;
     }
+
+
+    /* Brief:
+     * Param: url
+     */
     private JSONArray getMichData(String url)
     {
         JSONArray jArry = null;
@@ -131,6 +145,11 @@ public class MapActivity extends BaseActivity {
         }
         return jArry;
     }
+
+
+    /* Brief:
+     * Param: url
+     */
     private String getCity(String url)
     {
         String cityName = "default";
@@ -149,8 +168,11 @@ public class MapActivity extends BaseActivity {
             e.printStackTrace();
         }
         return cityName;
-
     }
+
+   /* Brief:
+    * Param: city
+    */
     private void getCityTax(String city) throws JSONException {
         String residentTax = "default";
         String nonResTax = "default";
@@ -169,12 +191,11 @@ public class MapActivity extends BaseActivity {
             }
         }
     }
-    private String parseJsonArrayUntil(String id)
-    {
-        String value = "default";
 
-        return value;
-    }
+
+  /* Brief:
+   * Param: cityCoordinatesArray
+   */
     private void displayPointsOnMap(JSONArray cityCoordinatesArray)
     {
         // loop through all cities
@@ -201,6 +222,11 @@ public class MapActivity extends BaseActivity {
 
         }
     }
+
+
+   /* Brief:
+    * Param: cityCoordinatesArray
+    */
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
