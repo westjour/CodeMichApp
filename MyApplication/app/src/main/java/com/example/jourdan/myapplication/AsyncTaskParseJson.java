@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 // you can make this class as another java file so it will be separated from your main activity.
 public class AsyncTaskParseJson extends AsyncTask<String, String, String> {

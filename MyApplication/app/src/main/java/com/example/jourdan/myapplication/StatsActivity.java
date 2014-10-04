@@ -6,9 +6,16 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.TableRow;
 
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+
 public class StatsActivity extends BaseActivity {
     final String TAG = "StatsActivity.java";
     private AppData appData = null;
+    private Utility util = new Utility();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
