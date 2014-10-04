@@ -15,7 +15,14 @@ public class AppData {
 
     public void setSalary(String salary)
     {
-        this.salary = Double.valueOf(salary);
+        if(salary.equals("") || Double.valueOf(salary) < 0 )
+        {
+            this.salary = 0.0;
+        }
+        else
+        {
+            this.salary = Double.valueOf(salary);
+        }
     }
     public String getSalaryString()
     {
