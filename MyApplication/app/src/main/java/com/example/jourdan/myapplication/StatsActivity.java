@@ -3,14 +3,8 @@ package com.example.jourdan.myapplication;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TableLayout;
-import android.widget.TextView;
 import android.widget.TableRow;
-
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.json.JSONArray;
 
 public class StatsActivity extends BaseActivity {
     final String TAG = "StatsActivity.java";

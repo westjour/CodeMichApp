@@ -228,4 +228,8 @@ public class Utility {
         Log.d(TAG,"num: "+numParks);
         return String.valueOf(numParks);
     }
+    public boolean getValue(JSONObject json, String element)
+    {
+        return false;
+    }
 }
