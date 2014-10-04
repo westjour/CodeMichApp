@@ -2,6 +2,7 @@ package com.example.jourdan.myapplication;
 
 import android.os.AsyncTask;
 import android.util.Log;
+
 import org.json.JSONArray;
 
 // you can make this class as another java file so it will be separated from your main activity.
