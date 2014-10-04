@@ -10,6 +10,7 @@ public class StatsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         appData = ((MyApplication) this.getApplication()).getAppData();
+        Log.d(TAG, "AppData: "+appData.getSalaryString() +" "+ appData.getCities());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
         Log.d(TAG, TAG + " created successfully" );

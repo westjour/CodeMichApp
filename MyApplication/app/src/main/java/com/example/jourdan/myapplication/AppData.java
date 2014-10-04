@@ -28,4 +28,8 @@ public class AppData {
         cities.put(location);
         return true;
     }
+    public JSONArray getCities()
+    {
+        return cities;
+    }
 }
