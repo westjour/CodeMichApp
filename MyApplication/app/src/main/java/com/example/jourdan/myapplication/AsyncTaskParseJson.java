@@ -23,7 +23,7 @@ public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
         String response = "";
         Log.e(TAG, "base url" + url);
         String queryUrl = url[0];
-        Log.e(TAG, "QUERY UURRLLLLLL" + queryUrl);
+        Log.e(TAG, "QUERY URL" + queryUrl);
         // instantiate our json parser
         JsonParser jParser = new JsonParser();
         // get json string from url

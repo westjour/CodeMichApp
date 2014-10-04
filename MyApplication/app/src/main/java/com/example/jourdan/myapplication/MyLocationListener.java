@@ -1,22 +1,22 @@
 package com.example.jourdan.myapplication;
 
-import android.os.Bundle;
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationManager;
-import android.widget.TextView;
 import android.app.Activity;
+import android.location.Location;
 import android.location.LocationListener;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 
 /*---------- Listener class to get coordinates ------------- */
 public class MyLocationListener implements LocationListener {
+    final String TAG = "MyLocationListener.java";
 
         // current latitude
-        double mLat;
+        public double mLat;
 
         // current longitude
-        double mLng;
+        public double mLng;
 
         // The activity in which this listener was created
         Activity mActivity;
@@ -30,6 +30,8 @@ public class MyLocationListener implements LocationListener {
         public void onLocationChanged(Location loc) {
             mLat = loc.getLatitude();
             mLng = loc.getLongitude();
+            Log.d(TAG, "New Coords: "+mLat+"-"+mLng);
+
             TextView myLatText = (TextView)mActivity.findViewById(R.id.lat);
             TextView myLngText = (TextView)mActivity.findViewById(R.id.lng);
             myLatText.setText(String.valueOf(mLat));
@@ -44,4 +46,9 @@ public class MyLocationListener implements LocationListener {
 
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+        public String getLat()
+        {
+            return Double.toString(mLat);
+        }
 }

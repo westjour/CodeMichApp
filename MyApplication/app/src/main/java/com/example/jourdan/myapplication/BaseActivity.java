@@ -8,7 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public abstract class BaseActivity extends Activity{
-
+    AppData APP_DATA = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

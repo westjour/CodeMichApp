@@ -19,7 +19,6 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class JsonParser {
-
     final String TAG = "JsonParser.java";
 
     static InputStream is = null;

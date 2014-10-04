@@ -2,6 +2,7 @@ package com.example.jourdan.myapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,15 +21,23 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 public class MapActivity extends BaseActivity {
     private static final String TAG = "MapActivity";
+    public final static String APP_DATA = "";
+    AppData appData = null;
+    Intent statsIntent = null;;
+
+    public final static String SALARY = "";
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private AlertDialog.Builder builder = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        appData = ((MyApplication) this.getApplication()).getAppData();
         builder = new AlertDialog.Builder(this);
         JSONArray cityPoints = null;
         super.onCreate(savedInstanceState);
+        statsIntent = new Intent(this, StatsActivity.class);
+        Log.d(TAG, "inital appData"+appData.toString());
 
         setContentView(R.layout.activity_map);
         mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -37,8 +46,21 @@ public class MapActivity extends BaseActivity {
         mMap.setOnMapClickListener(new OnMapClickListener() {
             @Override
             public void onMapClick(LatLng point) {
+                JSONObject location = new JSONObject();
                 String lat = Double.toString(point.latitude);
                 String lng = Double.toString(point.longitude);
+                try {
+                    location.put("lat",lat);
+                    location.put("lng",lng);
+                    appData.addCity(location);
+                    updateAppData( appData );
+                    startActivity( statsIntent );
+
+                    displayDialog(builder, appData.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 Log.d(TAG, "User click" + lat + " : " + lng);
                 // For GooglePlayServices Version
                 // String geoCodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?"+ "latlng=" +lat+","+lng+"&key=AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio";
@@ -64,7 +86,10 @@ public class MapActivity extends BaseActivity {
                 .title("title"));
                 */
     }
-
+    private void updateAppData(AppData data)
+    {
+        ((MyApplication) this.getApplication()).setAppData(data);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
