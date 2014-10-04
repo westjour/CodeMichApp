@@ -8,6 +8,7 @@ import org.json.JSONObject;
  * Created by timsloncz on 10/4/14.
  */
 public class AppData {
+    private Utility util = new Utility();
     private Double salary = 0.0;
     private JSONArray cities = new JSONArray();
 
@@ -31,5 +32,14 @@ public class AppData {
     public JSONArray getCities()
     {
         return cities;
+    }
+    public JSONArray getCityNames()
+    {
+        JSONArray cityNames = new JSONArray();
+        for(int i=0; i< cities.length(); i++)
+        {
+            break;
+        }
+        return cityNames;
     }
 }

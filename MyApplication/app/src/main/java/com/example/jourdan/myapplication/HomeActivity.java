@@ -22,6 +22,8 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utility util = new Utility();
+        util.getAffordableAssistedHousing("GrandRapids");
         setContentView(R.layout.activity_home);
 
         // Get current GPS location

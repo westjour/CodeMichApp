@@ -1,5 +1,7 @@
 package com.example.jourdan.myapplication;
 
+import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -37,6 +39,7 @@ public class MapActivity extends BaseActivity {
         builder = new AlertDialog.Builder(this);
         JSONArray cityPoints = null;
         super.onCreate(savedInstanceState);
+
         statsIntent = new Intent(this, StatsActivity.class);
         Log.d(TAG, "inital appData"+appData.toString());
 
