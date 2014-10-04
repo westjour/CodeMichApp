@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
 public class MapActivity extends BaseActivity {
-    private static final String TAG = "MyActivity";
+    private static final String TAG = "MapActivity";
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private AlertDialog.Builder builder = null;
@@ -30,13 +30,14 @@ public class MapActivity extends BaseActivity {
 
         setContentView(R.layout.activity_map);
         mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+
         // Set listener for user map clicks
         mMap.setOnMapClickListener(new OnMapClickListener() {
             @Override
             public void onMapClick(LatLng point) {
                 String lat = Double.toString(point.latitude);
                 String lng = Double.toString(point.longitude);
-                Log.i(TAG, "User click" + lat + " : " + lng);
+                Log.d(TAG, "User click" + lat + " : " + lng);
                 // For GooglePlayServices Version
                 // String geoCodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?"+ "latlng=" +lat+","+lng+"&key=AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio";
                 String geoCodeUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&sensor=false";
@@ -46,6 +47,7 @@ public class MapActivity extends BaseActivity {
             }
         });
         // we will using AsyncTask during parsing
+        // This creates markers for all cities with income tax and places them on the map
         /*
         try {
             String mapStuff = new AsyncTaskParseJson().execute("http://data.michigan.gov/resource/kvss-tqw8.json?").get();
@@ -131,11 +133,9 @@ public class MapActivity extends BaseActivity {
         JSONObject test = getGeocodeData(url);
         try
         {
-            //String stats = test.getString("status");
             JSONArray results = test.getJSONArray("results");
             cityName = results.getJSONObject(0).getJSONArray("address_components").getJSONObject(2).getString("long_name");
-            //cityName = addressComp.getString("long_name");
-            displayDialog(this.builder,cityName);
+            Log.d(TAG, "city retrieved from geoCode: "+cityName);
             getCityTax(cityName);
 
         }
@@ -144,7 +144,6 @@ public class MapActivity extends BaseActivity {
             Log.e(TAG, "JSONArray error "+e);
             e.printStackTrace();
         }
-        Log.d(TAG,test.toString());
         return cityName;
 
     }
@@ -172,23 +171,20 @@ public class MapActivity extends BaseActivity {
 
         return value;
     }
-    private void displayPointsOnMap(JSONArray pointArray)
+    private void displayPointsOnMap(JSONArray cityCoordinatesArray)
     {
         // loop through all cities
-        for (int i = 0; i < pointArray.length(); i++) {
+        for (int i = 0; i < cityCoordinatesArray.length(); i++) {
 
             // Each element in the array is a JSONObject
             JSONObject c = null;
             try {
-                c = pointArray.getJSONObject(i);
+                c = cityCoordinatesArray.getJSONObject(i);
 
                 JSONObject location = c.getJSONObject("location_1");
 
                 String latitude = location.getString("latitude");
                 String longitude = location.getString("longitude");
-                // Storing each json item in variable
-                String nonresidenttax = c.getString("nonresidenttax");
-                String taxrate = c.getString("taxrate");
 
                 Double lat = Double.valueOf(latitude);
                 Double lng = Double.valueOf(longitude);

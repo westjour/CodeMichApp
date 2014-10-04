@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.widget.EditText;
 
 public class MyActivity extends BaseActivity {
+    final String TAG = "MyActivity.java";
     public final static String SALARY = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
