@@ -59,8 +59,6 @@ public class MapActivity extends BaseActivity {
                     appData.addCity(location);
                     updateAppData( appData );
                     startActivity( statsIntent );
-
-                    displayDialog(builder, appData.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
