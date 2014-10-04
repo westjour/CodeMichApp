@@ -5,9 +5,13 @@
     <TableRow>
         <TextView
             android:text="@string/city"
+            android:id="@+id/city"
             android:layout_weight="2" />
         <TextView
             android:text="@string/city_inc_tax"
+            android:layout_weight="1" />
+        <TextView
+            android:text="@string/sal_post_CItax"
             android:layout_weight="1" />
         <TextView
             android:text="@string/sal_post_CItax"
