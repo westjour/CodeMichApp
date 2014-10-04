@@ -29,14 +29,15 @@
             android:theme="@style/MyTextViewTheme" >
         </activity>
 
-        <meta-data
-        android:name="com.google.android.maps.v2.API_KEY"
-        android:value="AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio"/>
-
         <activity
             android:name=".BaseActivity"
             android:label="@string/title_activity_base" >
         </activity>
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio"/>
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
         <activity
             android:name=".CurrLocActivity"
             android:label="@string/title_activity_curr_loc" >
