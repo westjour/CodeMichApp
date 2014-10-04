@@ -46,8 +46,9 @@ public abstract class BaseActivity extends Activity{
                 intent = new Intent(this, StatsActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.action_settings:
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

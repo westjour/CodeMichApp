@@ -75,7 +75,8 @@ public class Utility {
         JSONObject test = getGeocodeData(url);
         try {
             JSONArray results = test.getJSONArray("results");
-            cityName = results.getJSONObject(0).getJSONArray("address_components").getJSONObject(2).getString("long_name");
+            cityName = results.getJSONObject(0).getJSONArray("address_components")
+                    .getJSONObject(2).getString("long_name");
             //Log.d(TAG, "city retrieved from geoCode: " + cityName);
             getCityTax(cityName);
 

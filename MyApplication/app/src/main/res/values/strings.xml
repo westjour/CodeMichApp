@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">My Application</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_stats">StatsActivity</string>
     <string name="title_activity_base">BaseActivity</string>
-
-    <!-- xml for Stats table -->
-    <string name="city">City</string>
-    <string name="city_inc_tax">Tax</string>
-    <string name="sal_post_CItax">Salary</string>
-    <string name="title_activity_curr_loc">CurrLocActivity</string>
-
 </resources>
