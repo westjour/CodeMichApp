@@ -1,14 +1,7 @@
 package com.example.jourdan.myapplication;
 
-<<<<<<< HEAD
 import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.google.android.gms.maps.GoogleMap;
-=======
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,38 +12,16 @@ import android.view.MenuItem;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
->>>>>>> master
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-<<<<<<< HEAD
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-=======
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
->>>>>>> master
 
 import java.util.concurrent.ExecutionException;
 
-<<<<<<< HEAD
-public class MapActivity extends Activity {
-    private GoogleMap mMap;
-=======
 public class MapActivity extends BaseActivity {
     private static final String TAG = "MapActivity";
     public final static String APP_DATA = "";
@@ -61,7 +32,6 @@ public class MapActivity extends BaseActivity {
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private AlertDialog.Builder builder = null;
->>>>>>> master
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,26 +39,12 @@ public class MapActivity extends BaseActivity {
         builder = new AlertDialog.Builder(this);
         JSONArray cityPoints = null;
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
-        // URL format for send lat lng to google geocode api to get location information
-        //https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=API_KEY
-        //GET("url");
 
-        setContentView(R.layout.activity_map);
-        mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(42.7336, -84.4467))
-                .title("Hello world"));
-        // we will using AsyncTask during parsing
-        new AsyncTaskParseJson().execute();
-=======
         statsIntent = new Intent(this, StatsActivity.class);
         Log.d(TAG, "inital appData"+appData.toString());
 
         setContentView(R.layout.activity_map);
         mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
->>>>>>> master
 
         // Set listener for user map clicks
         mMap.setOnMapClickListener(new OnMapClickListener() {
@@ -149,19 +105,6 @@ public class MapActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-<<<<<<< HEAD
-    private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
-                    .getMap();
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                // The Map is verified. It is now safe to manipulate the map.
-
-            }
-        }
-=======
 
     /* Brief:
      * Param: builder
@@ -323,6 +266,5 @@ public class MapActivity extends BaseActivity {
 
             }
         }
->>>>>>> master
     }
 }

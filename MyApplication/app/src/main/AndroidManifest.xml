@@ -35,10 +35,6 @@
             android:label="@string/title_activity_base" >
         </activity>
         <meta-data
-<<<<<<< HEAD
-        android:name="com.google.android.maps.v2.API_KEY"
-        android:value="AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio"/>
-=======
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio"/>
         <meta-data android:name="com.google.android.gms.version"
@@ -47,7 +43,6 @@
             android:name=".CurrLocActivity"
             android:label="@string/title_activity_curr_loc" >
         </activity>
->>>>>>> master
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
