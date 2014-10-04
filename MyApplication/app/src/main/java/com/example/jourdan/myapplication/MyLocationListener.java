@@ -1,12 +1,10 @@
 package com.example.jourdan.myapplication;
 
-import android.os.Bundle;
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationManager;
-import android.widget.TextView;
 import android.app.Activity;
+import android.location.Location;
 import android.location.LocationListener;
+import android.os.Bundle;
+import android.widget.TextView;
 
 
 /*---------- Listener class to get coordinates ------------- */
