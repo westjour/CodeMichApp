@@ -4,20 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MenuInflater;
-import android.view.ContextMenu;
-import android.widget.AdapterView;
-import android.widget.EditText;
+import android.view.MenuItem;
 
-public class BaseActivity extends Activity {
+public abstract class BaseActivity extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -37,7 +33,7 @@ public class BaseActivity extends Activity {
         switch (id) {
             // Go to Home Activity
             case R.id.action_Home:
-                intent = new Intent(this, MyActivity.class);
+                intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 break;
             // Go to Map Activity

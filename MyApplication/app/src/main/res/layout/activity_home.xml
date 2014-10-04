@@ -9,6 +9,24 @@
     android:orientation="vertical"
     tools:context=".MyActivity">
 
+    <!-- temporary - just want to see Lat and Long quickly-->
+    <TextView
+        android:text="LAT:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/lat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="LONG:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:text="Enter your anticipated salary"
         android:layout_width="wrap_content"
@@ -17,7 +35,8 @@
     <EditText android:id="@+id/edit_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Salary" />
+        android:hint="Salary"
+        android:inputType="number"/>
 
     <Button
         android:layout_width="wrap_content"
