@@ -2,8 +2,6 @@ package com.example.jourdan.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class StatsActivity extends BaseActivity {
     final String TAG = "StatsActivity.java";
