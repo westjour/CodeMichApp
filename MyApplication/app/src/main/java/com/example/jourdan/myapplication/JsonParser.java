@@ -27,12 +27,14 @@ public class JsonParser {
     static JSONArray jAry = null;
     static String json = "";
 
-    public JSONArray getJSONFromUrl(String url) {
+    public String getJSONFromUrl(String url) {
 
         // make HTTP request
         try {
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
+
+            Log.d(TAG, "HTTP URL:" + url);
             HttpGet httpGet = new HttpGet(url);
 
             HttpResponse httpResponse = httpClient.execute(httpGet);
@@ -59,21 +61,11 @@ public class JsonParser {
             json = sb.toString();
             //json = json.replace("\\", "");
             json = json.replace(" ", "");
-            Log.e(TAG, "JSON STRING: "+ json);
+            Log.d(TAG, "JSON STRING: "+ json);
 
         } catch (Exception e) {
             Log.e(TAG, "Error converting result " + e.toString());
         }
-
-        // try parse the string to a JSON object
-        try {
-            //jObj = new JSONObject(json);
-            jAry = new JSONArray(json);
-        } catch (JSONException e) {
-            Log.e(TAG, "Error parsing data " + e.toString());
-        }
-
-        // return JSON String
-        return jAry;
+        return json;
     }
 }
