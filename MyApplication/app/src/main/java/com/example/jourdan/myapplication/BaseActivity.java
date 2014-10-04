@@ -10,9 +10,6 @@ import android.view.ContextMenu;
 import android.widget.AdapterView;
 import android.widget.EditText;
 
-//static final private int FIRSTITEM = Menu.FIRST;
-//static final private int SECONDITEM = Menu.FIRST + 1;
-
 public class BaseActivity extends Activity {
 
     @Override
@@ -41,11 +38,7 @@ public class BaseActivity extends Activity {
             // Go to Home Activity
             case R.id.action_Home:
                 intent = new Intent(this, MyActivity.class);
-                //EditText editText = (EditText) findViewById(R.id.edit_message);
-                //String message = editText.getText().toString();
-                //intent.putExtra(SALARY, message);
                 startActivity(intent);
-
                 break;
             // Go to Map Activity
             case R.id.action_Map:
