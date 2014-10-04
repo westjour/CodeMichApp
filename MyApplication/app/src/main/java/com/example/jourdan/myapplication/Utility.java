@@ -1,5 +1,6 @@
 package com.example.jourdan.myapplication;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.util.Log;
 
@@ -15,13 +16,11 @@ import java.util.concurrent.ExecutionException;
  */
 public class Utility {
     final String TAG = "Utility.java";
-    public double getIncTaxRate(){
-        double rate = 0.0;
-        return rate;
-    }
 
-    /* Brief:
-     * Param: url
+    /**
+     *
+     * @param url
+     * @return
      */
     private JSONArray getMichData(String url)
     {
@@ -46,8 +45,11 @@ public class Utility {
         return jArry;
     }
 
-    /* Brief:
-     * Param: url
+
+    /**
+     *
+     * @param url
+     * @return
      */
     private JSONObject getGeocodeData(String url)
     {
@@ -68,14 +70,25 @@ public class Utility {
         return jObj;
     }
 
-    public String getCityFromLatLng(String lat, String lng)
+
+    /**
+     *
+     * @param lat
+     * @param lng
+     * @return
+     */
+    public String getCityFromCoord(String lat, String lng)
     {
         String queryString = "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&sensor=false";
         String cityName = getCity(queryString);
         return cityName;
     }
-    /* Brief:
-     * Param: url
+
+
+    /**
+     *
+     * @param url
+     * @return
      */
     private String getCity(String url) {
         String cityName = "default";
@@ -84,38 +97,44 @@ public class Utility {
             JSONArray results = test.getJSONArray("results");
             cityName = results.getJSONObject(0).getJSONArray("address_components")
                     .getJSONObject(2).getString("long_name");
-            //Log.d(TAG, "city retrieved from geoCode: " + cityName);
-            getCityTax(cityName);
-
         } catch (JSONException e) {
             //Log.e(TAG, "JSONArray error " + e);
             e.printStackTrace();
+            return "not found";
         }
         return cityName;
     }
 
 
-   /* Brief:
-    * Param: city
-    */
-    private double getCityTax(String city) throws JSONException {
-        String residentTax = "default";
-        String nonResTax = "default";
+    /**
+     *
+     * @param city
+     * @return
+     * @throws JSONException
+     */
+    public JSONObject getCityTax(String city) throws JSONException {
+        String residentTax = "0.0";
+        String nonResTax = "0.0";
         String queryUrl = "http://data.michigan.gov/resource/kvss-tqw8.json?";
         JSONArray temp = getMichData(queryUrl);
-        for(int i=0;i<temp.length();i++){
+
+        for(int i=0; i<temp.length(); i++){
             String humanAddress = temp.getJSONObject(i).getJSONObject("location_1").getString("human_address");
             String taxCity = new JSONObject(humanAddress).getString("city");
 
             if(taxCity.equals(city)){
                 residentTax = temp.getJSONObject(i).getString("taxrate");
                 nonResTax = temp.getJSONObject(i).getString("nonresidenttax");
-                //displayDialog(this.builder,taxCity +" : "+residentTax+" : "+nonResTax);
+                break;
             }
         }
 
-        return 0.0;
+        JSONObject taxRates = new JSONObject();
+        taxRates.put("res", residentTax);
+        taxRates.put("nonres", nonResTax);
+        return taxRates;
     }
+
 
     /**
      *
@@ -185,6 +204,7 @@ public class Utility {
         Log.d(TAG,"num: "+numSchools);
         return String.valueOf(numSchools);
     }
+
 
     /**
      *
