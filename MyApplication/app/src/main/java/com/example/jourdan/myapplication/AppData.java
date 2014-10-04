@@ -11,6 +11,7 @@ public class AppData {
     private Utility util = new Utility();
     private Double salary = 0.0;
     private JSONArray cities = new JSONArray();
+    private JSONArray attributes = new JSONArray();
 
     public void setSalary(String salary)
     {
@@ -33,6 +34,11 @@ public class AppData {
     {
         return cities;
     }
+
+    /**
+     *
+     * @return
+     */
     public JSONArray getCityNames()
     {
         JSONArray cityNames = new JSONArray();
@@ -41,5 +47,49 @@ public class AppData {
             break;
         }
         return cityNames;
+    }
+
+    /**
+     *
+     * @param attribute
+     * @return
+     */
+    public boolean addAttribute(String attribute)
+    {
+        attributes.put(attribute);
+        return true;
+    }
+    /**
+     *
+     * @param attribute
+     * @return
+     */
+    public boolean removeAttribute(String attribute)
+    {
+        JSONArray temp = new JSONArray();
+        for(int i=0;i<attributes.length();i++)
+        {
+            String test = "";
+            try {
+                test = attributes.getString(i);
+                if(!test.equals(attribute))
+                {
+                    temp.put(test);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        attributes = temp;
+        return true;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public JSONArray getAttributes()
+    {
+        return attributes;
     }
 }

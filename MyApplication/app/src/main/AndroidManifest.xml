@@ -39,10 +39,6 @@
             android:value="AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio"/>
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity
-            android:name=".CurrLocActivity"
-            android:label="@string/title_activity_curr_loc" >
-        </activity>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

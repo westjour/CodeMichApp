@@ -38,6 +38,27 @@
         android:hint="Salary"
         android:inputType="number"/>
 
+    <CheckBox android:id="@+id/checkbox_parks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parks"
+        android:onClick="onCheckboxClicked"/>
+    <CheckBox android:id="@+id/checkbox_schools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schools"
+        android:onClick="onCheckboxClicked"/>
+    <CheckBox android:id="@+id/checkbox_Tax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City Tax"
+        android:onClick="onCheckboxClicked"/>
+    <CheckBox android:id="@+id/checkbox_historic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Historic Sites"
+        android:onClick="onCheckboxClicked"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

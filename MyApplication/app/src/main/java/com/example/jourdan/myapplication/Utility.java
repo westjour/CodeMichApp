@@ -82,7 +82,8 @@ public class Utility {
         JSONObject test = getGeocodeData(url);
         try {
             JSONArray results = test.getJSONArray("results");
-            cityName = results.getJSONObject(0).getJSONArray("address_components").getJSONObject(2).getString("long_name");
+            cityName = results.getJSONObject(0).getJSONArray("address_components")
+                    .getJSONObject(2).getString("long_name");
             //Log.d(TAG, "city retrieved from geoCode: " + cityName);
             getCityTax(cityName);
 
@@ -178,7 +179,6 @@ public class Utility {
 
             if(city.equals(cityName)){
                 numSchools++;
-                //displayDialog(this.builder,taxCity +" : "+residentTax+" : "+nonResTax);
             }
         }
         Log.d(TAG,"num: "+numSchools);
@@ -195,5 +195,37 @@ public class Utility {
         String queryUrl = "http://data.michigan.gov/resource/nchs-ngr4.json";
         JSONArray temp = getMichData(queryUrl);
         return temp;
+    }
+    public String getParks(String lat, String lng)
+    {
+        String city = getCityFromLatLng(lat, lng);
+        return "bla";
+    }
+    public String getHistoricPlaces(String cityName)
+    {
+        Integer numParks = 0;
+        String queryUrl = "http://data.michigan.gov/resource/ekha-b43f.json";
+        JSONArray parks = getMichData(queryUrl);
+        for(int i=0;i<parks.length();i++){
+            String city = null;
+            try {
+                if( parks.getJSONObject(i).has("city")) {
+                    city = parks.getJSONObject(i).getString("city");
+                    Log.d(TAG, "park: " + city);
+                }
+                else
+                {
+                    city = "noValue";
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if(city.equals(cityName)){
+                numParks++;
+            }
+        }
+        Log.d(TAG,"num: "+numParks);
+        return String.valueOf(numParks);
     }
 }
