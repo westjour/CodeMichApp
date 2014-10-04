@@ -1,7 +1,6 @@
 package com.example.jourdan.myapplication;
 
 import android.content.Intent;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +18,7 @@ public class HomeActivity extends BaseActivity {
         // Get current GPS location
         LocationManager locationManager = (LocationManager)
         getSystemService(this.LOCATION_SERVICE);
-        LocationListener locationListener = new MyLocationListener(this);
+        MyLocationListener locationListener = new MyLocationListener(this);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
     }
 

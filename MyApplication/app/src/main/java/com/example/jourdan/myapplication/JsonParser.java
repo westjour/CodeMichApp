@@ -8,7 +8,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -60,7 +59,7 @@ public class JsonParser {
             json = sb.toString();
             //json = json.replace("\\", "");
             json = json.replace(" ", "");
-            Log.d(TAG, "JSON STRING: "+ json);
+            Log.d(TAG, "JSON STRING: " + json);
 
         } catch (Exception e) {
             Log.e(TAG, "Error converting result " + e.toString());

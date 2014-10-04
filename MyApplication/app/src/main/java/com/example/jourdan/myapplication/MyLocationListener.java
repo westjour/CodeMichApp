@@ -11,10 +11,10 @@ import android.widget.TextView;
 public class MyLocationListener implements LocationListener {
 
         // current latitude
-        double mLat;
+        public double mLat;
 
         // current longitude
-        double mLng;
+        public double mLng;
 
         // The activity in which this listener was created
         Activity mActivity;
