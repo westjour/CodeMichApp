@@ -10,7 +10,6 @@ import android.widget.EditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 public class HomeActivity extends BaseActivity {
     final String TAG = "HomeActivity.java";
     AppData appData = new AppData();
@@ -37,54 +36,45 @@ public class HomeActivity extends BaseActivity {
         boolean checked = ((CheckBox) view).isChecked();
         // Check which checkbox was clicked
         switch(view.getId()) {
-            case R.id.checkbox_parks:
+            case R.id.checkbox_housing:
                 if (checked)
                 {
                     //Add to attributes in appData
-                    appData.addAttribute("parks");
+                    appData.addAttribute("affordableHousing");
                 }
                 else
                 {
                     //Remove from attributes in appData
-                    appData.removeAttribute("parks");
-
+                    appData.removeAttribute("affordableHousing");
                 }
                 break;
             case R.id.checkbox_schools:
-                if (checked)
-                {
+                if (checked){
                     appData.addAttribute("schools");
                 }
-                else
-                {
+                else{
                     appData.removeAttribute("schools");
                 }
                 break;
             case R.id.checkbox_Tax:
-                if (checked)
-                {
+                if (checked){
                     appData.addAttribute("tax");
                 }
-                else
-                {
+                else{
                     appData.removeAttribute("tax");
                 }
                 break;
             case R.id.checkbox_historic:
-                if (checked)
-                {
+                if (checked){
                     appData.addAttribute("historic");
                 }
-                else
-                {
+                else {
                     appData.removeAttribute("historic");
                 }
                 break;
         }
         Log.d(TAG, "Attributes: " + appData.getAttributes());
     }
-
-
     /** Called when the user clicks the Send button */
     public void sendMessage(View view) throws JSONException {
         JSONObject location = new JSONObject();
