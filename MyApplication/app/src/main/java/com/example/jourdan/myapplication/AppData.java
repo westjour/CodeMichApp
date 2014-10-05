@@ -36,6 +36,11 @@ public class AppData {
         cities.put(location);
         return true;
     }
+    public boolean removeLocation(int i)
+    {
+        cities.remove(i);
+        return true;
+    }
     public JSONArray getCities()
     {
         return cities;
