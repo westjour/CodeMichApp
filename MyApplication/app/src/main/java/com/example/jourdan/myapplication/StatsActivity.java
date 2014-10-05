@@ -23,7 +23,7 @@ public class StatsActivity extends BaseActivity
         setContentView(R.layout.activity_stats);
 
         appData = ((MyApplication) this.getApplication()).getAppData();
-        Log.d(TAG, "AppData: "+appData.getSalaryString() +" "+ appData.getCities());
+        Log.d(TAG, "AppData: "+appData.getSalaryString() +" "+ appData.getCities()+" "+appData.getAttributes());
         Log.d(TAG, TAG + " created successfully");
 
         populateTable();
@@ -38,6 +38,7 @@ public class StatsActivity extends BaseActivity
         table.removeAllViews();
 
         JSONArray citiesArray = appData.getCities();
+        Log.d(TAG, "citiesArray: "+citiesArray);
         Utility util = new Utility();
 
         String lat = null;
@@ -48,10 +49,18 @@ public class StatsActivity extends BaseActivity
         for(int i=0; i<citiesArray.length(); i++) {
             try
             {
-                lat = citiesArray.getJSONObject(0).getString("lat");
-                lng = citiesArray.getJSONObject(0).getString("lng");
-                cityName = util.getCityFromCoord(lat, lng);
-                cityTax = util.getCityTax(cityName);
+                lat = citiesArray.getJSONObject(i).getString("lat");
+                lng = citiesArray.getJSONObject(i).getString("lng");
+                if(Double.valueOf(lat) != 0.0 && 0.0 != Double.valueOf(lat) )
+                {
+                    Log.d(TAG,"Check city: "+lat+"-"+lng);
+                    cityName = util.getCityFromCoord(lat, lng);
+                    Log.d(TAG, "city: " + cityName);
+                    cityTax = util.getCityTax(cityName);
+                }
+                else{
+                    continue;
+                }
             }
             catch (JSONException e) { e.printStackTrace(); }
 

@@ -95,10 +95,15 @@ public class Utility {
         JSONObject test = getGeocodeData(url);
         try {
             JSONArray results = test.getJSONArray("results");
-            cityName = results.getJSONObject(0).getJSONArray("address_components")
-                    .getJSONObject(2).getString("long_name");
+            if( !test.getString("status").equals("ZERO_RESULTS"))
+            {
+                cityName = results.getJSONObject(0).getJSONArray("address_components")
+                        .getJSONObject(2).getString("long_name");
+
+            }
+            Log.d(TAG,"City from GeoCode: "+cityName);
         } catch (JSONException e) {
-            //Log.e(TAG, "JSONArray error " + e);
+            Log.e(TAG, "JSONArray error " + e);
             e.printStackTrace();
             return "not found";
         }

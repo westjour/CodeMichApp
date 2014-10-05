@@ -30,7 +30,7 @@ public class MyLocationListener implements LocationListener {
         public void onLocationChanged(Location loc) {
             mLat = loc.getLatitude();
             mLng = loc.getLongitude();
-            Log.d(TAG, "New Coords: "+mLat+"-"+mLng);
+            Log.d(TAG, "New Coords: "+mLat+","+mLng);
 
             TextView myLatText = (TextView)mActivity.findViewById(R.id.lat);
             TextView myLngText = (TextView)mActivity.findViewById(R.id.lng);
