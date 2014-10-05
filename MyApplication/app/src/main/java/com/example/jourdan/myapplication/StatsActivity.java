@@ -1,5 +1,6 @@
 package com.example.jourdan.myapplication;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -40,7 +41,11 @@ public class StatsActivity extends BaseActivity
             setContentView(TV);
         }
         else{
-            createCityColumn();
+            new Thread(new Runnable() {
+                public void run() {
+                    createCityColumn();
+                }
+            }).start();
             //Create scrolling view to hold attribute columns
             scroll = new HorizontalScrollView(this);
             subScroll = new LinearLayout(this);
@@ -70,6 +75,7 @@ public class StatsActivity extends BaseActivity
         cityHeading.setText("City");
         cityHeading.setTextSize(26);
         LL.addView(cityHeading);
+
         for(int i=0;i<appData.getCities().length(); i++)
         {
             try
