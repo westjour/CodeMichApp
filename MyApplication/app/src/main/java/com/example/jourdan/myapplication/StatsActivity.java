@@ -34,7 +34,7 @@ public class StatsActivity extends BaseActivity
      * @return
      */
     public void populateTable(){
-        TableLayout table = (TableLayout) findViewById(R.id.statsTable);
+        TableLayout table = (TableLayout)findViewById(R.id.statsTable);
         table.removeAllViews();
 
         JSONArray citiesArray = appData.getCities();
@@ -103,6 +103,6 @@ public class StatsActivity extends BaseActivity
             }
 
             table.addView(row);
-        }
+        }*/
     }
 }

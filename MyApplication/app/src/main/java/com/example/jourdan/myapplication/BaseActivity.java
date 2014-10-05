@@ -38,6 +38,7 @@ public abstract class BaseActivity extends Activity{
         switch (id) {
             // Go to Home Activity
             case R.id.action_Home:
+                //CheckBox chkbx1 = (CheckBox) findViewById(R.id.***);
                 intent = new Intent(this, HomeActivity.class);
                 startActivity(intent);
                 break;
