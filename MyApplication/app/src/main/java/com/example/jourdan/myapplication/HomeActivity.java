@@ -19,10 +19,6 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Tesing
-        //Utility util = new Utility();
-        //util.getHistoricPlaces("Lansing");
-
         setContentView(R.layout.activity_home);
 
         // Get current GPS location
@@ -88,6 +84,7 @@ public class HomeActivity extends BaseActivity {
         Log.d(TAG, "Attributes: " + appData.getAttributes());
     }
 
+
     /** Called when the user clicks the Send button */
     public void sendMessage(View view) throws JSONException {
         JSONObject location = new JSONObject();
@@ -105,6 +102,7 @@ public class HomeActivity extends BaseActivity {
         appData.addCity(location);
 
         Log.d(TAG,"Cities on leave Home: "+appData.getSalaryString()+" "+appData.getCities());
+
         ((MyApplication) this.getApplication()).setAppData(appData);
         startActivity(intent);
     }
