@@ -61,6 +61,7 @@ public class MapActivity extends BaseActivity {
                     updateAppData( appData );
 
                     Log.d(TAG,"appData on MapLeave: "+appData.getSalaryString()+" "+appData.getCities());
+
                     startActivity( statsIntent );
                 } catch (JSONException e) {
                     e.printStackTrace();
