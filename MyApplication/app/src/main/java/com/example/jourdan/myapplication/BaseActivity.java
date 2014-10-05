@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.app.ActivityManager;
+import android.content.ComponentName;
+
+import java.util.AbstractList;
 
 public abstract class BaseActivity extends Activity{
     AppData APP_DATA = null;
@@ -34,6 +38,7 @@ public abstract class BaseActivity extends Activity{
         // Handle action bar item clicks here.
         int id = item.getItemId();
 
+        // Go to another activity after pressing Action Bar
         Intent intent;
         switch (id) {
             // Go to Home Activity

@@ -13,7 +13,6 @@ import java.util.concurrent.ExecutionException;
 
 public class StatsActivity extends BaseActivity
 {
-
     final String TAG = "StatsActivity.java";
     private AppData appData = null;
 
