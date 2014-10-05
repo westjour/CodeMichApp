@@ -18,9 +18,14 @@
         <!-- android:windowSoftInputMode prevents input box from gaining focus on activity startup -->
         <activity
             android:name=".HomeActivity"
+<<<<<<< HEAD
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden"
             android:launchMode="singleTop" >
+=======
+            android:label="@string/title_activity_home"
+            android:windowSoftInputMode="stateHidden" >
+>>>>>>> 2c133f45d4681a26e0b5288db5c9295461780dc8
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

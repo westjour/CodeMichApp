@@ -60,7 +60,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
         // Set listener for user map clicks
         mMap.setOnMapClickListener(new OnMapClickListener() {
@@ -88,13 +87,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
                 {
                     displayDialog(builder, "Location limit reached. Please remove a location by tapping the marker before adding another location");
                 }
-
-                // For GooglePlayServices Version
-                // String geoCodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?"+ "latlng=" +lat+","+lng+"&key=AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio";
-                String geoCodeUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&sensor=false";
-
-                Log.d(TAG, "Initial geoCodeUrl: "+geoCodeUrl);
-                String city = getCity(geoCodeUrl);
             }
         });
         // we will using AsyncTask during parsing
@@ -115,12 +107,10 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
     }
     public void addMarker(GoogleMap mMap, Double lat, Double lng)
     {
-
         Marker marker;
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(lat, lng)));
     }
-
     @Override
     public boolean onMarkerClick(Marker marker) {
         LatLng point = marker.getPosition();
@@ -147,10 +137,8 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
 
             }
         }
-
         return true;
     }
-
     /**
      * @Brief Update App data
      * @param data
@@ -159,8 +147,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
     {
         ((MyApplication) this.getApplication()).setAppData(data);
     }
-
-
     /* Brief:
      * Param: builder
      * Param: message
@@ -176,13 +162,7 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
                 });
         AlertDialog alert = builder.create();
         alert.show();
-
-
-     /* Brief:
-     *  Param: url
-     */
     }
-
     private JSONObject getGeocodeData(String url)
     {
         JSONObject jObj = null;
@@ -201,8 +181,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
         }
         return jObj;
     }
-
-
     /* Brief:
      * Param: url
      */
@@ -228,8 +206,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
         }
         return jArry;
     }
-
-
     /* Brief:
      * Param: url
      */
@@ -252,7 +228,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
         }
         return cityName;
     }
-
    /* Brief:
     * Param: city
     */
@@ -274,8 +249,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
             }
         }
     }
-
-
   /* Brief:
    * Param: cityCoordinatesArray
    */
@@ -302,11 +275,8 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }
     }
-
-
    /* Brief:
     * Param: cityCoordinatesArray
     */

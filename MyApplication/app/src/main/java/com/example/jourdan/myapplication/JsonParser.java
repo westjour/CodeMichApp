@@ -16,19 +16,16 @@ import java.io.UnsupportedEncodingException;
 
 public class JsonParser {
     final String TAG = "JsonParser.java";
-
     static InputStream is = null;
     static String json = "";
 
     public String getJSONFromUrl(String url) {
-
         // make HTTP request
         try {
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            Log.d(TAG, "HTTP URL:" + url);
+            //Log.d(TAG, "HTTP URL:" + url);
             HttpGet httpGet = new HttpGet(url);
-
             HttpResponse httpResponse = httpClient.execute(httpGet);
             HttpEntity httpEntity = httpResponse.getEntity();
             is = httpEntity.getContent();
@@ -40,9 +37,7 @@ public class JsonParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         try {
-
             BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 12);
             StringBuilder sb = new StringBuilder();
             String line = null;
@@ -52,7 +47,7 @@ public class JsonParser {
             is.close();
             json = sb.toString();
             json = json.replace(" ", "");
-            Log.d(TAG, "JSON STRING: " + json);
+            //Log.d(TAG, "JSON STRING: " + json);
 
         } catch (Exception e) {
             Log.e(TAG, "Error converting result " + e.toString());

@@ -5,7 +5,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TextView;
 
 
 /*---------- Listener class to get coordinates ------------- */
@@ -30,7 +29,7 @@ public class MyLocationListener implements LocationListener {
         public void onLocationChanged(Location loc) {
             mLat = loc.getLatitude();
             mLng = loc.getLongitude();
-            Log.d(TAG, "New Coords: "+mLat+","+mLng);
+            Log.d(TAG, "New Coords: " + mLat + "," + mLng);
         }
 
         @Override

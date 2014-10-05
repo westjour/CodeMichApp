@@ -7,7 +7,7 @@
 
     <!-- Theme for Statistics View -->
     <style name="MyTextViewTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>

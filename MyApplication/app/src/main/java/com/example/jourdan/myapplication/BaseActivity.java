@@ -6,10 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.app.ActivityManager;
-import android.content.ComponentName;
-
-import java.util.AbstractList;
 
 public abstract class BaseActivity extends Activity{
     AppData APP_DATA = null;

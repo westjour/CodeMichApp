@@ -3,7 +3,6 @@ package com.example.jourdan.myapplication;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 /**
  * Created by timsloncz on 10/4/14.
  */
@@ -11,6 +10,7 @@ public class AppData {
     private Double salary = 0.0;
     private JSONArray cities = new JSONArray();
     private JSONArray attributes = new JSONArray();
+    Utility util = new Utility();
 
     public void setSalary(String salary)
     {
@@ -33,6 +33,17 @@ public class AppData {
     }
     public boolean addCity(JSONObject location)
     {
+        try {
+            if(location.getString("lat").equals("0.0"))
+            {
+            }
+            else {
+                String name = util.getCityFromCoord(location.getString("lat"), location.getString("lng"));
+                location.put("name", name);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        };
         cities.put(location);
         return true;
     }
