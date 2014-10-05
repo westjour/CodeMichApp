@@ -1,27 +1,16 @@
 package com.example.jourdan.myapplication;
 
-import android.content.Intent;
-import android.nfc.Tag;
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.os.AsyncTask;
-
 import java.util.concurrent.ExecutionException;
-
 /**
  * Created by Jourdan on 10/4/2014.
  */
 public class Utility {
     final String TAG = "Utility.java";
 
-    /**
-     *
-     * @param url
-     * @return
-     */
     private JSONArray getMichData(String url)
     {
         JSONArray jArry = null;
@@ -44,13 +33,6 @@ public class Utility {
         }
         return jArry;
     }
-
-
-    /**
-     *
-     * @param url
-     * @return
-     */
     private JSONObject getGeocodeData(String url)
     {
         JSONObject jObj = null;
@@ -69,27 +51,12 @@ public class Utility {
         }
         return jObj;
     }
-
-
-    /**
-     *
-     * @param lat
-     * @param lng
-     * @return
-     */
     public String getCityFromCoord(String lat, String lng)
     {
         String queryString = "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&sensor=false";
         String cityName = getCity(queryString);
         return cityName;
     }
-
-
-    /**
-     *
-     * @param url
-     * @return
-     */
     private String getCity(String url) {
         String cityName = "default";
         JSONObject test = getGeocodeData(url);
@@ -109,14 +76,6 @@ public class Utility {
         }
         return cityName;
     }
-
-
-    /**
-     *
-     * @param city
-     * @return
-     * @throws JSONException
-     */
     public JSONObject getCityTax(String city) throws JSONException {
         String residentTax = "0.0";
         String nonResTax = "0.0";
@@ -139,13 +98,6 @@ public class Utility {
         taxRates.put("nonres", nonResTax);
         return taxRates;
     }
-
-
-    /**
-     *
-     * @param cityName
-     * @return
-     */
     public String getAffordableAssistedHousing(String cityName)
     {
         String queryUrl = "http://data.michigan.gov/resource/nchs-ngr4.json?";
@@ -156,7 +108,7 @@ public class Utility {
             try {
                 if( temp.getJSONObject(i).has("city")) {
                     city = temp.getJSONObject(i).getString("city");
-                    Log.d(TAG, "Housing: " + city);
+                    //Log.d(TAG, "Housing: " + city);
                 }
                 else
                 {
@@ -165,13 +117,12 @@ public class Utility {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
             if(city.equals(cityName)){
                 num++;
                 //displayDialog(this.builder,taxCity +" : "+residentTax+" : "+nonResTax);
             }
         }
-        Log.d(TAG,"num: "+num);
+        //Log.d(TAG,"num: "+num);
         return String.valueOf(num);
     }
 
@@ -191,7 +142,10 @@ public class Utility {
             try {
                 if( temp.getJSONObject(i).has("city")) {
                     city = temp.getJSONObject(i).getString("city");
-                    Log.d(TAG, "school: " + city);
+                    //Log.d(TAG, "school: " + city);
+                    if(city.equals(cityName)){
+                        numSchools++;
+                    }
                 }
                 else
                 {
@@ -200,18 +154,11 @@ public class Utility {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-            if(city.equals(cityName)){
-                numSchools++;
-            }
         }
-        Log.d(TAG,"num: "+numSchools);
+        //Log.d(TAG,"num: "+numSchools);
         return String.valueOf(numSchools);
     }
-
-
     /**
-     *
      * @param county
      * @return
      */
@@ -221,12 +168,7 @@ public class Utility {
         JSONArray temp = getMichData(queryUrl);
         return temp;
     }
-    public String getParks(String lat, String lng)
-    {
-        String city = getCityFromCoord(lat, lng);
-        return "bla";
-    }
-    public String getHistoricPlaces(String cityName)
+    public String getParks(String cityName)
     {
         Integer numParks = 0;
         String queryUrl = "http://data.michigan.gov/resource/ekha-b43f.json";
@@ -237,6 +179,33 @@ public class Utility {
                 if( parks.getJSONObject(i).has("city")) {
                     city = parks.getJSONObject(i).getString("city");
                     Log.d(TAG, "park: " + city);
+                }
+                else
+                {
+                    city = "noValue";
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if(city.equals(cityName)){
+                numParks++;
+            }
+        }
+        Log.d(TAG,"num: "+numParks);
+        return String.valueOf(numParks);
+    }
+    public String getHistoricPlaces(String cityName)
+    {
+        Integer numParks = 0;
+    String queryUrl = "http://data.michigan.gov/resource/ekha-b43f.json";
+        JSONArray parks = getMichData(queryUrl);
+        for(int i=0;i<parks.length();i++){
+            String city = null;
+            try {
+                if( parks.getJSONObject(i).has("city")) {
+                    city = parks.getJSONObject(i).getString("city");
+                    //Log.d(TAG, "park: " + city);
                 }
                 else
                 {

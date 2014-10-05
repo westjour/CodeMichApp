@@ -3,21 +3,9 @@ package com.example.jourdan.myapplication;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 // you can make this class as another java file so it will be separated from your main activity.
 public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
-
     final String TAG = "AsyncTaskParseJson.java";
-
-    // set your json string url here
-    //String yourJsonStringUrl = "http://demo.codeofaninja.com/tutorials/json-example-with-php/index.php";
-    String yourJsonStringUrl = "http://data.michigan.gov/resource/kvss-tqw8.json?";
-    // contacts JSONArray
-    JSONArray dataJsonArr = null;
-
     @Override
     protected void onPreExecute() {}
 
@@ -33,7 +21,6 @@ public class AsyncTaskParseJson extends AsyncTask<String, String, String> {
 
         return response;
     }
-
     @Override
     protected void onPostExecute(String strFromDoInBg) {
         String returnString = strFromDoInBg;
