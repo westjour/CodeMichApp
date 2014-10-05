@@ -31,11 +31,6 @@ public class MyLocationListener implements LocationListener {
             mLat = loc.getLatitude();
             mLng = loc.getLongitude();
             Log.d(TAG, "New Coords: "+mLat+","+mLng);
-
-            TextView myLatText = (TextView)mActivity.findViewById(R.id.lat);
-            TextView myLngText = (TextView)mActivity.findViewById(R.id.lng);
-            myLatText.setText(String.valueOf(mLat));
-            myLngText.setText(String.valueOf(mLng));
         }
 
         @Override
