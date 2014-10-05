@@ -25,28 +25,6 @@ public class StatsActivity extends BaseActivity
     LinearLayout subScroll = null;
 
 
-    TextView editText = (TextView)findViewById(R.id.edit_message);
-    TextWatcher tw = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            String added_number = editText.getText().toString();
-            if (added_number.length() != 0) {
-                int number  = Integer.parseInt(added_number);
-                if (number > 1000)
-                    editText.setText("666");
-            }
-
-        }
-    };
-    //editText.addTextChangedListener(tw);
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

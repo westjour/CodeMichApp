@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.content.res.Configuration;
+import android.widget.Toast;
 
 public class SplashScreen extends Activity {
 
     // Splash screen timer (milliseconds)
-    private static int SPLASH_TIME_OUT = 2000;
+    private static int SPLASH_TIME_OUT = 7000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,6 @@ public class SplashScreen extends Activity {
                 // close this activity
                 finish();
             }
-        }, SPLASH_TIME_OUT);
+        }, SPLASH_TIME_OUT );
     }
 }
