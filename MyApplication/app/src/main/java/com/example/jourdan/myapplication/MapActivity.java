@@ -43,6 +43,7 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
 
         setContentView(R.layout.activity_map);
         mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         mMap.setOnMarkerClickListener(this);
         JSONArray points = appData.getCities();
         for(int i=0; i<points.length(); i++ )
@@ -89,21 +90,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
                 }
             }
         });
-        // we will using AsyncTask during parsing
-        // This creates markers for all cities with income tax and places them on the map
-        /*
-        try {
-            String mapStuff = new AsyncTaskParseJson().execute("http://data.michigan.gov/resource/kvss-tqw8.json?").get();
-            displayPointsOnMap(new JSONArray(mapStuff));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(42.7336, -84.4467))
-                .title("Hello world"));
-                */
     }
     public void addMarker(GoogleMap mMap, Double lat, Double lng)
     {
@@ -162,92 +148,6 @@ public class MapActivity extends BaseActivity implements GoogleMap.OnMarkerClick
                 });
         AlertDialog alert = builder.create();
         alert.show();
-    }
-    private JSONObject getGeocodeData(String url)
-    {
-        JSONObject jObj = null;
-        String response = "Failed to connect to Geocoding API";
-        try {
-            Log.d(TAG,"get geocodeUrl "+url);
-            response = new AsyncTaskParseJson().execute(url).get();
-            jObj = new JSONObject(response);
-            return jObj;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jObj;
-    }
-    /* Brief:
-     * Param: url
-     */
-    private JSONArray getMichData(String url)
-    {
-        JSONArray jArry = null;
-        String response = "Failed to connect to Michigan Data API";
-        try {
-            response = new AsyncTaskParseJson().execute(url).get();
-            jArry = new JSONArray(response);
-            return jArry;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            jArry = new JSONArray("{\"status\":\"fail\"}");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return jArry;
-    }
-    /* Brief:
-     * Param: url
-     */
-    private String getCity(String url)
-    {
-        String cityName = "default";
-        JSONObject test = getGeocodeData(url);
-        try
-        {
-            JSONArray results = test.getJSONArray("results");
-            cityName = results.getJSONObject(0).getJSONArray("address_components").getJSONObject(2).getString("long_name");
-            Log.d(TAG, "city retrieved from geoCode: "+cityName);
-            getCityTax(cityName);
-
-        }
-        catch (JSONException e)
-        {
-            Log.e(TAG, "JSONArray error "+e);
-            e.printStackTrace();
-        }
-        return cityName;
-    }
-   /* Brief:
-    * Param: city
-    */
-    private void getCityTax(String city) throws JSONException {
-        String residentTax = "default";
-        String nonResTax = "default";
-        String queryUrl = "http://data.michigan.gov/resource/kvss-tqw8.json?";
-        JSONArray temp = getMichData(queryUrl);
-        for(int i=0;i<temp.length();i++)
-        {
-            String humanAddress = temp.getJSONObject(i).getJSONObject("location_1").getString("human_address");
-            String taxCity = new JSONObject(humanAddress).getString("city");
-            Log.d(TAG,"city: "+taxCity);
-            if(taxCity.equals(city))
-            {
-                residentTax = temp.getJSONObject(i).getString("taxrate");
-                nonResTax = temp.getJSONObject(i).getString("nonresidenttax");
-                displayDialog(this.builder,taxCity +" : "+residentTax+" : "+nonResTax);
-            }
-        }
     }
   /* Brief:
    * Param: cityCoordinatesArray
