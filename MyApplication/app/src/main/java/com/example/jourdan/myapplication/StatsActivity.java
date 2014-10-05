@@ -103,6 +103,6 @@ public class StatsActivity extends BaseActivity
             }
 
             table.addView(row);
-        }*/
+        }
     }
 }
