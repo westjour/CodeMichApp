@@ -7,16 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 
 public class HomeActivity extends BaseActivity {
     final String TAG = "HomeActivity.java";
-    public final static String APP_DATA = "";
     AppData appData = new AppData();
     MyLocationListener locationListener = null;
 
@@ -24,7 +20,7 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Tesing
-        Utility util = new Utility();
+        //Utility util = new Utility();
         //util.getHistoricPlaces("Lansing");
 
         setContentView(R.layout.activity_home);
@@ -38,7 +34,7 @@ public class HomeActivity extends BaseActivity {
 
         MyLocationListener locationListener = new MyLocationListener(this);
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
     }
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
@@ -95,7 +91,6 @@ public class HomeActivity extends BaseActivity {
     /** Called when the user clicks the Send button */
     public void sendMessage(View view) throws JSONException {
         JSONObject location = new JSONObject();
-        JSONArray cities = new JSONArray();
 
         // Do something in response to button
         Intent intent = new Intent(this, MapActivity.class);
@@ -103,12 +98,13 @@ public class HomeActivity extends BaseActivity {
         location.put("lat",lat);
         String lng = Double.toString(locationListener.mLng);
         location.put("lng",lng);
-        cities.put(location);
         EditText editText = (EditText) findViewById(R.id.edit_message);
         String salary = editText.getText().toString();
+        Log.d(TAG,"user loc: "+location);
         appData.setSalary(salary);
         appData.addCity(location);
 
+        Log.d(TAG,"Cities on leave Home: "+appData.getSalaryString()+" "+appData.getCities());
         ((MyApplication) this.getApplication()).setAppData(appData);
         startActivity(intent);
     }

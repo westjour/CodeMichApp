@@ -36,12 +36,12 @@ public class MapActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         appData = ((MyApplication) this.getApplication()).getAppData();
+        Log.d(TAG,"appData on map init: "+appData.getSalaryString()+"-"+appData.getCities());
         builder = new AlertDialog.Builder(this);
-        JSONArray cityPoints = null;
+
         super.onCreate(savedInstanceState);
 
         statsIntent = new Intent(this, StatsActivity.class);
-        Log.d(TAG, "inital appData"+appData.toString());
 
         setContentView(R.layout.activity_map);
         mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
@@ -53,17 +53,19 @@ public class MapActivity extends BaseActivity {
                 JSONObject location = new JSONObject();
                 String lat = Double.toString(point.latitude);
                 String lng = Double.toString(point.longitude);
+                Log.d(TAG, "User click" + lat + " : " + lng);
                 try {
                     location.put("lat",lat);
                     location.put("lng",lng);
                     appData.addCity(location);
                     updateAppData( appData );
+
+                    Log.d(TAG,"appData on MapLeave: "+appData.getSalaryString()+" "+appData.getCities());
                     startActivity( statsIntent );
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                Log.d(TAG, "User click" + lat + " : " + lng);
                 // For GooglePlayServices Version
                 // String geoCodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?"+ "latlng=" +lat+","+lng+"&key=AIzaSyDzhKcf70Hb_NfVM1ktF4LtA161JsOJcio";
                 String geoCodeUrl = "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&sensor=false";
