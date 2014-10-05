@@ -16,6 +16,7 @@ public class HomeActivity extends BaseActivity {
     AppData appData = new AppData();
     MyLocationListener locationListener = null;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,46 +40,29 @@ public class HomeActivity extends BaseActivity {
         switch(view.getId()) {
             case R.id.checkbox_parks:
                 if (checked)
-                {
                     //Add to attributes in appData
                     appData.addAttribute("parks");
-                }
                 else
-                {
                     //Remove from attributes in appData
                     appData.removeAttribute("parks");
-
-                }
                 break;
             case R.id.checkbox_schools:
                 if (checked)
-                {
                     appData.addAttribute("schools");
-                }
                 else
-                {
                     appData.removeAttribute("schools");
-                }
                 break;
             case R.id.checkbox_Tax:
                 if (checked)
-                {
                     appData.addAttribute("tax");
-                }
                 else
-                {
                     appData.removeAttribute("tax");
-                }
                 break;
             case R.id.checkbox_historic:
                 if (checked)
-                {
                     appData.addAttribute("historic");
-                }
                 else
-                {
                     appData.removeAttribute("historic");
-                }
                 break;
         }
         Log.d(TAG, "Attributes: " + appData.getAttributes());

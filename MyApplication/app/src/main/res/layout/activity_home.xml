@@ -28,7 +28,7 @@
 
         <TextView
             android:typeface="monospace"
-            android:text="To view effects on income enter your anticipated salary"
+            android:text="To view effects on income, enter your anticipated salary"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
@@ -95,5 +95,4 @@
             android:onClick="sendMessage" />
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

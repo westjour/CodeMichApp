@@ -39,27 +39,27 @@ public abstract class BaseActivity extends Activity{
         int id = item.getItemId();
 
         // Go to another activity after pressing Action Bar
-        Intent intent;
+        Intent intent = null;
         switch (id) {
             // Go to Home Activity
             case R.id.action_Home:
                 //CheckBox chkbx1 = (CheckBox) findViewById(R.id.***);
                 intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
                 break;
             // Go to Map Activity
             case R.id.action_Map:
                 intent = new Intent(this, MapActivity.class);
-                startActivity(intent);
                 break;
             // Go to Stats Activity
             case R.id.action_Stats:
                 intent = new Intent(this, StatsActivity.class);
-                startActivity(intent);
                 break;
             case R.id.action_settings:
                 return true;
         }
+
+        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         return super.onOptionsItemSelected(item);
     }
 }

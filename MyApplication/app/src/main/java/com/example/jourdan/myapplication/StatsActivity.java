@@ -1,13 +1,19 @@
 package com.example.jourdan.myapplication;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
+import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.text.TextWatcher;
+import android.widget.TextView;
 
 import java.util.concurrent.ExecutionException;
 
@@ -15,6 +21,29 @@ public class StatsActivity extends BaseActivity
 {
     final String TAG = "StatsActivity.java";
     private AppData appData = null;
+
+
+    TextView editText = (TextView)findViewById(R.id.edit_message);
+    TextWatcher tw = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {}
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            String added_number = editText.getText().toString();
+            if (added_number.length() != 0) {
+                int number  = Integer.parseInt(added_number);
+                if (number > 1000)
+                    editText.setText("666");
+            }
+
+        }
+    };
+    //editText.addTextChangedListener(tw);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

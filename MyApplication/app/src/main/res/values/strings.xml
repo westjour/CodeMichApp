@@ -6,4 +6,9 @@
     <string name="title_activity_map">Locations</string>
     <string name="title_activity_stats">Stats</string>
     <string name="title_activity_base">BaseActivity</string>
+
+    <!-- Column headers for table in Stats View -->
+    <string name="city">CITY</string>
+    <string name="rit">RIT</string>
+    <string name="nrit">NRIT</string>
 </resources>
